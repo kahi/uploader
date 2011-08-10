@@ -1,0 +1,120 @@
+<?php
+	
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title><?php echo self::$title ?></title>
+
+<style type="text/css">
+
+body, input {
+	/*font-size:89%;*/ font-family:Georgia, serif; color:#333;
+}
+
+#all {
+	margin:4em auto;
+	width:500px;
+}
+
+fieldset {
+	padding:2em;
+	border:1px solid #ccc;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+	legend {
+		font-size:125%;
+	}
+
+	div.name,
+	div.password {
+		position:relative; display:block;
+		padding:0.4em 0;
+	}
+	
+	div.autologin {
+		padding:1em 0 0 120px;
+	}
+	
+	div.name input,
+	div.password input {
+		position:absolute; left:120px;
+		padding:1px 3px;
+		font-size:110%;
+	}
+	
+	div.submit {
+		padding:1.5em 0 0 120px;
+	}
+		
+	input[type=submit] {
+		padding:7px 14px;
+		font-size:inherit;
+		cursor:pointer;
+	}
+
+	.message {
+		margin-bottom:2em;
+		padding:1em 2em;
+		
+		background-color:#ffe;
+		border:1px solid #cca;
+		
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+	}
+
+</style>
+
+</head>
+<body onload="document.forms[0].name.focus();">
+<?php 
+// debug::dump(Uploader::$user); 
+// debug::dump($_SESSION);
+// debug::dump($_COOKIE);
+// debug::dump(sha1('me'));
+?>
+
+	<div id="all">
+
+<?php 
+$messages = new Messages(Uploader::$id);
+if ($waiting_messages = $messages->getAll())
+	foreach ($waiting_messages as $one) 
+		echo '<p class="message">'.$one.'</p>';
+?>
+
+
+		<form action="?do=login" method="post">
+		<fieldset>
+			<legend><?php echo self::$title ?></legend>
+			
+			<div class="name">
+				<label>Name<input type="text" name="name" /></label></div>
+			
+			<div class="password">
+				<label>Password<input type="password" name="password" /></label></div>
+
+
+			<div class="autologin">
+				<label title="<?php echo __('You will kept logged until you log out or Sun becomes a red giant...'); ?>">
+				<input type="checkbox" name="autologin" />
+				<?php echo __('don\'t ask me next time'); ?></label></div>
+
+			<div class="submit">
+				<input type="submit" value="<?php echo __('Log in!'); ?>" id="submit" /></div>
+
+				
+		</fieldset>
+		</form>
+	</div>
+</body>
+</html>
+
+<?php	
+$messages->deleteAll();

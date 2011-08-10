@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en<?php // echo self::$language ?>" lang="en<?php // echo self::$language ?>">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="en<?php // echo self::$language ?>" />
+	<meta name="generator" content="Uploader <?php echo self::VERSION ?>" />
+
+	<title>Uploader theme</title>
+
+	<link rel="stylesheet" href="<?php echo self::$template_url ?>screen.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="<?php echo self::$template_url ?>js/colorbox/colorbox.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="<?php echo self::$template_url ?>js/colorbox/colorbox-override.css" type="text/css" media="screen, projection" />
+	
+	<script type="text/javascript">
+		var data_url = '<?php echo self::$data_url ?>';
+		var template_url = '<?php echo self::$template_url ?>';
+		var user_can_delete = <?php echo self::$user->can('delete'); ?>;
+	</script>
+
+	<script src="<?php echo self::$template_url ?>js/jq.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/jquery.cookie.js" type="text/javascript"></script>
+	<script type="text/javascript" src="<?php echo self::$template_url ?>js/colorbox/jquery.colorbox-min.js"></script>
+	<!--<script src="<?php echo self::$template_url ?>js/jquery.hotkeys.js" type="text/javascript"></script>-->
+	<script src="<?php echo self::$template_url ?>js/jquery.ui.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/zeroclipboard/ZeroClipboard.js" type="text/javascript"></script>
+	
+	<script src="<?php echo self::$template_url ?>js/my.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/dialog.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/adddir.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/deletefile.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/renamefile.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/renamedir.js" type="text/javascript"></script>
+	<script src="<?php echo self::$template_url ?>js/deletedir.js" type="text/javascript"></script>
+	<!--[if IE]>
+	<link type="text/css" media="screen" rel="stylesheet" href="<?php echo self::$template_url ?>js/colorbox-custom-ie.css" title="example" /><![endif]-->
+</head>
+<body>
+<div id="all">
+
+	<div id="messages"><!--messages dynamically created--></div>
+
+	<h1><span>My files</span></h1>
+
+	<!-- <a href="#filelist" tabindex="1">to files</a> -->
+
+<div id="tabs"><!--headings dynamically moved--></div>
+<div id="content">
+
+<?php if (self::$user->can('read')) { ?>
+	
+	<h2 id="h-browse" tabindex="500">Browse</h2>
+	<div id="browse" class="active">
+
+		<p id="breadcrumbs"><!-- here comes the dynamic content --></p>
+
+
+		<div id="dirlist">
+			<ul>
+				<li id="upl_dl_"><span tabindex="700">files</span>
+					<ul><!-- here comes the dynamic content --></ul>
+				</li>
+			</ul>
+			
+			<div id="dl-controls">
+				<span class="button start-add-dir" title="create subfolder" tabindex="800"></span>
+				<span class="button start-rename-dir" title="rename active directory" tabindex="800"></span>
+				<span class="button start-delete-dir" title="delete active directory" tabindex="800"></span></div>
+			
+		</div>
+	
+	
+	
+		<div id="filelist" class="list">
+
+			<!-- here comes the dynamic content -->
+	
+		</div><!-- /filelist -->
+	
+	</div><!-- /browse -->
+	
+<?php } ?>
+
+
+<?php if (self::$user->can('write')) { ?>
+	
+	<h2 id="h-add" tabindex="500">Add files</h2>
+	<div id="add">
+		<p>Uploading form comes here... <!-- @todo (!!) --></p>
+	
+	
+	
+	</div>
+<?php } ?>
+
+</div><!-- /content -->
+
+<ul style="margin:2em; font-size:110%">
+	<li><a href="?do=logout">Log out</a></li>
+	<li><a href="?do=analysis">Analysis</a></li>
+	<li><a href="?">Reload</a></li>
+	<li>Time: <?php echo Timer::Get(); ?> (without ajax requests)</li>
+ 	<li>memory_get_usage: <?php echo implode(' ', filesystem::niceFileSize(memory_get_usage())) . '/' . implode(' ', filesystem::niceFileSize(memory_get_usage(true))) ?></li>
+ 	<li>memory_get_peak_usage: <?php echo implode(' ', filesystem::niceFileSize(memory_get_peak_usage())) . '/' . implode(' ', filesystem::niceFileSize(memory_get_peak_usage(true))) ?></li>
+
+</ul>
+
+</div>
+</body>
+</html>
+<?php 
+$messages = new Messages(Uploader::$id);
+$messages->deleteAll();
+?>

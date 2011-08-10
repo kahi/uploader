@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Uploader: Analysis</title>
+  <!-- robots no -->
+	<style type="text/css">
+
+	#all {
+		margin:4em auto;
+		width:600px;
+		padding:2em;
+		
+		border:1px solid #ccc;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+	}
+
+	</style>
+</head>
+<body>
+<div id="all">
+
+	<a href="?">&larr; home</a>
+	
+	<h1>Analysis</h1>
+	
+	
+	<h2>Users analysis</h2>
+
+<?php 
+debug::dump(Uploader::$users);
+?>
+
+	
+	<h2>Whole Uploader class</h2>
+
+<?php
+debug::dump(get_class_vars('Uploader'));
+?>
+
+
+	<h2>PHP info</h2>
+	
+
+<?php
+if (!$this->phpinfo) {
+	
+	?><p><a href="?do=analysis/full">Show phpInfo()</a></p><?php
+
+} else {
+	
+	?><div class="phpinfo"><?php phpinfo(); ?></div><?php
+	
+}
+?>
+
+
+</div>
+</body>
+</html>

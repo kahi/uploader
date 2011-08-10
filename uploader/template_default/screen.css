@@ -1,0 +1,678 @@
+/* CSS Document */
+
+
+/* =reset
+------------------------------------------------*/
+
+body,
+dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+form, fieldset, legend,
+th, td, hr, pre, p, blockquote {margin:0; padding:0;}
+
+h1, h2, h3, h4, h5, h6 {font-size:100%; font-weight:normal; line-height:1;}
+
+ol, ul {list-style:none;}
+
+table {border-collapse:collapse; border-spacing:0;}
+
+fieldset, img {border:0;}
+
+body {font-size:62.5%;}
+
+input[type=text] {padding:1px 3px;}
+
+hr {display:none;}
+
+th {text-align:left;}
+
+
+/* =main elements
+********************************************/
+
+html {
+	background:#999;
+}
+
+body {
+	padding:50px 0;
+	background:#999; color:#222;
+	font-family:"Lucida Grande", Tahoma, lucida, sans-serif;
+	/* "Lucida Grande","Segoe UI",Tahoma,lucida,sans-serif */
+}
+
+a {
+	color:#222;
+}
+	
+.functional {
+	cursor:pointer;
+}
+
+
+/* =header
+********************************************/
+
+#errors {
+	padding-left:40px;
+	background:#999;
+}
+
+	#errors p {
+		line-height:1.5; color:#000; font-size:120%;
+	}
+	
+h1 {
+	margin:0 0 60px 40px;
+	color:#ebebeb; font-size:30px; text-shadow:0 1px 0 #777;
+}
+
+	.loading h1 span {
+		padding-right:30px;
+		background:url(images/loading.gif) right 0.5em no-repeat;
+	}
+
+
+/* =messages
+********************************************/
+
+#messages {
+	position:fixed; left:0; top:0; z-index:100;
+	width:100%; height:auto;
+}
+	
+	#messages p {
+		height:37px; 
+		border-bottom:1px solid #bebebe;
+		line-height:37px; color:#fff; font-size:120%;
+		cursor:pointer;
+	}
+	
+		#messages p span {
+			padding:0 20px 0 70px;
+			display:block; line-height:37px;
+		}
+	
+	#messages p.error {
+		background:url(images/message-error-back.png) repeat-x;
+	}
+	
+		#messages p.error span {
+			background:url(images/message-error-icon.png) 40px 5px no-repeat;
+		}
+	
+	#messages p.ok {
+		background:url(images/message-ok-back.png) repeat-x;
+	}
+	
+		#messages p.ok span {
+			background:url(images/message-ok-icon.png) 40px 5px no-repeat;
+		}
+	
+/* =content
+********************************************/
+
+
+#tabs {
+	padding-left:20px;
+}
+
+#tabs h2 {
+	float:left; margin-right:20px; 
+	padding:0 20px;
+
+	-moz-border-radius:7px 7px 0 0;
+	-khtml-border-radius:7px 7px 0 0;
+	-webkit-border-top-right-radius:7px; -webkit-border-top-left-radius:7px;
+	border-radius:7px 7px 0 0;
+
+	background:#aaa;
+	color:#333; font-size:120%; font-style:italic; line-height:30px; text-shadow:0 1px 0 #ddd;
+	cursor:pointer;
+}
+		
+	#tabs h2.active {
+		position:relative; top:1px; z-index:1000;
+		background:#bbb;
+		cursor:default;
+	}
+	
+	#tabs h2:focus {
+		outline:0;
+		text-decoration:underline; font-weight: bold;
+	}
+
+#content {
+	clear:both; margin:0 20px;
+	border-top:1px solid #ccc; border-bottom:1px solid #888;
+	
+	-moz-border-radius:0 0 7px 7px;
+	-khtml-border-radius:0 0 7px 7px ;
+	-webkit-border-bottom-right-radius:7px; -webkit-border-bottom-left-radius:7px;
+	border-radius:0 0 7px 7px ;
+	
+	background:#bbb;
+}
+
+
+#breadcrumbs {
+	padding:15px 0 10px 20px;
+	font-size:140%; font-style:italic; color:#333;
+}
+	
+	#breadcrumbs span {
+		margin:0 3px;
+	}
+	
+	#breadcrumbs .active {
+		font-weight:bold; color:#333; text-shadow:0 1px 0 #ddd;
+	}
+
+	#breadcrumbs span:focus {
+		outline:0;
+		text-decoration:underline;
+	}
+
+/* =dirlist [< content]
+********************************************/
+
+#dirlist {
+	float:left;
+	padding:20px 40px 20px 20px;
+	border-top:1px solid #a3a3a3; border-right:1px solid #a3a3a3;
+	font-size:110%;
+}
+
+	#dirlist > ul {}
+
+		#dirlist li {
+			line-height:1.7;
+		}
+		
+			#dirlist span {
+				outline:0;
+				display:block;
+				cursor:pointer;
+			}
+			
+				#dirlist span:hover {
+					/*color:#000;*/ /*text-shadow:0 0 3px #999;*/ font-weight:bold;
+				}
+
+			#dirlist li li {
+				padding-left:20px;
+			}
+			
+		#dirlist li.open {
+			background:url(images/directory-open.png) 0 5px no-repeat;
+		}
+	
+		#dirlist li.closed {
+			background:url(images/directory-closed.png) 0 6px no-repeat;
+		}
+			
+		#dirlist li.active {
+			background-position:0 7px;
+		}
+		
+			#dirlist li.active > span {
+				font-size:110%; font-style:italic; font-weight:bold; text-shadow:0 1px 0 #ddd;
+			}
+	
+			#dirlist li span:focus /*:after*/ {
+				text-decoration:underline;
+				/*content:' ►'; color:rgba(0,0,0,0.4);*/
+			}
+			
+			#dirlist li > span.marked {
+				padding:2px 4px;
+				background:#d3d3d3;
+				-moz-border-radius:4px;
+				-khtml-border-radius:4px;
+				-webkit-border-radius:4px;
+				border-radius:4px;
+			}
+			
+			#dirlist li > span.marked-modified {
+				font-style: italic; /* color:#fff; background:#c7d19a;*/
+			}
+
+		#dirlist #new-dir input[type=text] {
+			width:120px; padding:1px 2px;
+			border:0;
+			background:#eee;
+			font-size:inherit; font-family:inherit;
+		}
+
+/* =filelist [< content]
+********************************************/
+
+/* @todo make large file-list managable (scrolling down hides some controls...) */
+#filelist {
+	float:left;
+	width:550px; min-height:300px; padding:20px 10px; /* max-height:600px; overflow-y:auto; */
+	border-top:1px solid #a3a3a3;
+	font-size:110%;
+}
+
+#content:after {
+	display:block; content:''; clear:both;
+} 
+	
+/*	#filelist table {
+		table-layout:fixed;
+	}*/
+	
+	#filelist thead th {
+		border-bottom:1px solid #a3a3a3;
+		text-shadow:0 1px 0 #ddd;
+	}
+	
+	#filelist th,
+	#filelist td {
+		padding:5px 15px;
+	}
+
+	
+	#filelist tbody td {
+		border-right:1px solid #a9a9a9;
+	}
+	
+	#filelist tbody tr:nth-child(even) td {
+		background-color:#c2c2c2;
+	} 
+	
+	#filelist .date,
+	#filelist .type {
+		border-right:0;
+	}
+	
+	#filelist th.name {
+		padding-left:35px;
+	} 
+		
+	#filelist .name {
+		padding:5px 10px 5px 0; min-width:200px;
+		white-space:nowrap;
+
+		-moz-border-radius-topleft: 4px; -moz-border-radius-bottomleft: 4px;
+		-webkit-border-top-left-radius: 4px; -webkit-border-bottom-left-radius: 4px;
+		border-top-left-radius: 4px; border-bottom-left-radius: 4px;
+	}
+
+	#filelist .size {
+		padding-left:30px;
+		text-align:right; white-space:nowrap;
+	}
+
+	#filelist .time {
+		padding-left:5px;
+		text-align:right;
+	}
+
+	#filelist .time.old,
+	#filelist .date.today {
+		color:#666;
+	}
+
+	#filelist .type {
+		padding:5px 15px;
+		text-align:center;
+	}
+
+	#filelist td.type {
+		text-transform:uppercase;
+		-moz-border-radius-topright: 4px; -moz-border-radius-bottomright: 4px;
+		-webkit-border-top-right-radius: 4px; -webkit-border-bottom-right-radius: 4px;
+		border-top-right-radius: 4px; border-bottom-right-radius: 4px;
+	}
+
+		#filelist td.type span {
+			padding:0 2px;
+			-moz-border-radius: 2px;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+		}
+		
+		#filelist .archive td.type.on span {background-color:#a2a2a2;}
+		
+		#filelist .image td.type.on span {background-color:#f9cd34;}
+		
+		#filelist .audio td.type.on span {background-color:#ca90f8;}
+		
+		#filelist .video td.type.on span {background-color:#e8d4f7;}
+		
+		#filelist .doc td.type.on span {background-color:#86c2f4;}	
+		
+		
+	/* tfoot */
+	#filelist tfoot td {
+		padding-top:15px !important;
+		color:#666;
+	} 
+		
+		#filelist tfoot td.size {
+			}
+
+	
+	/* file .active2 */
+
+	#filelist tbody tr.active2 td {
+		background-color:#999;
+		border-color:transparent;
+	}
+
+
+	/* file:hover / .active */
+	#filelist tbody tr:hover td,
+	#filelist tbody tr.active td {
+		background-color:#555;
+		border-color:transparent;
+	}
+	
+	#filelist tbody tr:hover td.name,
+	#filelist tbody tr.active td.name {
+		background:#555 url(images/fl-show-options.png) left center no-repeat;
+	}
+
+
+	#filelist tbody tr.options-on:hover td.name,
+	#filelist tbody tr.options-on.active  td.name {
+		-moz-border-radius-bottomleft:0;
+		-webkit-border-bottom-left-radius:0;
+		border-bottom-left-radius:0;
+	}
+
+
+
+	#filelist tbody tr:hover *,
+	#filelist tbody tr.active *,
+	#filelist tbody tr:hover .time.old,
+	#filelist tbody tr.active .time.old,
+	#filelist tbody tr:hover .date.today,
+	#filelist tbody tr.active .date.today {
+		color:#fff;
+	}
+	
+	#filelist tbody tr:hover input,
+	#filelist tbody tr.active input,
+	#filelist tbody tr:hover .type.on span,
+	#filelist tbody tr.active .type.on span {
+		color:#333;
+	}
+	
+	#filelist tbody tr.active input.rename_to_namecore {
+		width:250px;
+	}
+	
+	
+	/* file:options */
+	#filelist td.name span {/* ff 3.5 does not accept relative on td or tr! */
+		position:relative;
+	}
+	
+	#filelist td.name .options-trigger {
+		position:relative;
+		padding:3px 0 3px 35px; 
+		cursor:pointer;
+		font-size:1px;
+	}
+	
+	#filelist td.name .options {
+		display:none;
+		position: absolute;	top:1.5em; left:0; z-index:10;
+		width:500px;
+		color:#fff;
+	}
+	
+	
+		#filelist td.name .options ul,
+		#filelist td.name .options div.preview {
+			float:left;
+		}
+		
+		#filelist td.name .options ul li span {
+			display:block; padding:0 35px 0 15px;
+			background:#555;
+			border:1px solid #444; border-width:1px 1px 0 0;
+			line-height:2em; white-space:nowrap;
+			cursor:pointer;
+		}
+		
+		#filelist td.name .options ul li span:hover {
+			background:#444;
+			border-right-color:#444;
+		}
+		
+		#filelist td.name .options ul li:last-child span,
+		#filelist td.name .options div.preview  {
+			-moz-border-radius-bottomleft: 4px;
+			-moz-border-radius-bottomright: 4px;
+			-webkit-border-bottom-left-radius: 4px;
+			-webkit-border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
+
+		#filelist td.name .options div.preview {
+			display:none;
+			padding:10px;
+			background:#444;
+		}
+		
+		#filelist td.name .options .used {
+			background:#81ae23;
+		}
+
+		
+		#filelist .no-files {
+			padding:2em 2em 2em 0;
+			text-align:center;
+			font-size:250%; color:#999; text-shadow:0 1px 0 #ddd;
+		}
+		
+		#filelist.loading {
+			background:url(images/loading-big.gif) 240px 80px no-repeat;
+		}
+
+
+#filelist a {
+	/*border-bottom:1px dotted #666;*/
+	color:#000; text-decoration:none;
+}
+	
+	#filelist a:hover {
+		/*border-bottom:0;*/
+	}
+	
+	#filelist a:focus {
+		outline:0;
+		text-decoration:underline;
+	}
+	
+	#filelist a:focus:before {
+		/*content:'► '; color:rgba(0,0,0,0.5);*/
+	}
+		
+
+/* =button v2.1
+********************************************/
+
+#dl-controls {
+	margin:2em 0 0 0;
+}
+
+.button {
+	margin:0 8px 0 0; padding:0; position:relative; float:left;
+	width:30px; height:30px;
+	cursor:pointer;
+	border:0;
+	background:url(images/button-big.png) left top no-repeat;
+	text-indent:-9999px; line-height:30px;
+}
+
+	.button:hover,
+	.button.active,
+	.button:focus {
+		background-position:left bottom;
+	}
+	
+	.button:focus {
+		position: relative; top:3px;
+	}
+	
+.button {
+	background-image:url(images/button-big.png);
+}
+
+.button.switch {
+	background-image:url(images/button-big-middle.png);
+}
+	
+	.button.switch.first {
+		background-image:url(images/button-big-left.png);
+	}
+	
+	.button.switch.last {
+		background-image:url(images/button-big-right.png);
+	}
+
+.button.alone {
+	margin:0 2em;
+}
+
+	.button .icon {
+		position:absolute; left:0; top:0;
+		width:30px; height:30px; 
+		background:center center no-repeat;
+	}
+
+
+
+
+	.button.start-add-dir .icon {
+		background-image:url(images/icon-add-dir.png);
+	}
+
+	.button.start-rename-dir .icon {
+		background-image:url(images/icon-rename.png);
+	}
+
+	.button.start-delete-dir .icon {
+		background-image:url(images/icon-delete.png);
+	}
+			
+			
+/* =dialog v2
+********************************************/
+
+/* general look */
+
+#wall {
+	position:fixed; left:0; top:0; z-index:1000;
+	width:100%; height:100%; 
+	background:#666; opacity:0.58;
+}
+
+#dialog {
+	position:fixed; left:50%; top:40%; z-index:1001;
+	/*min-width:350px; max-width:500px;*/ width:480px; margin-left:-270px; padding:40px 30px 20px 30px;
+}
+
+	#dialog p {
+		margin-bottom:1em;
+	}
+	
+	#dialog .buttons {
+		margin-top:3em;
+		text-align:right; boder:1px solid red;
+	}
+	
+	#dialog.info .buttons {
+		text-align:center;
+	}
+	
+	#dialog button {
+		margin-left:2em;
+		cursor:pointer;
+	}
+	
+	#dialog.info .buttons button {
+		margin-left:0;
+	}
+
+
+/* theming (colors, ...) */
+
+#dialog {
+	background:#222 url(images/dialog-back.png) repeat-x;
+	color:#eee; font-size:140%;
+	-moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px;
+}
+
+
+#dialog button {
+	padding:8px 15px;
+	background:#616161;
+	border-width:0 0 2px 0; border-style:solid; border-color:#3c3c3c;
+	-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
+	color:#fff;
+}
+
+	#dialog button:hover,
+	#dialog button:active {
+		background:#515151;
+		border-color:#323232;
+	}
+	
+	#dialog button:focus {
+		outline:2px solid #ddd; outline-radius:3px; -moz-outline-radius:3px;
+		/* border-color:#aaa; */
+	}
+
+#dialog button.alert {
+	background-color:#b00a0a;
+	border-color:#6d0808;
+}
+
+	#dialog button.alert:hover,
+	#dialog button.alert:active {
+		background-color:#980707;
+		border-color:#5d0404;
+	}
+	
+	#dialog button.alert:focus {
+		/* border-color:#ccc; */
+	}
+
+#dialog button.submit {
+	background-color:#0a78b0;
+	border-color:#084b6d;
+}
+
+	#dialog button.submit:hover,
+	#dialog button.submit:active {
+		background-color:#076798;
+		border-color:#043f5d;
+	}
+	
+	#dialog button.submit:focus {
+		/* border-color:#bbb; */
+	}
+
+
+/* tables */
+
+#dialog table th,
+#dialog table td {
+	padding:3px 15px 3px 2px;
+	border-bottom:1px solid #444;
+}
+
+#dialog table th {
+	
+}
+
+#dialog table th {
+	text-align:left;
+}

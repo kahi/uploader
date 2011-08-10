@@ -1,0 +1,8 @@
+### activate mod_expires and set expiration time for images to 1 month
+
+ExpiresActive On
+
+ExpiresByType image/gif A2592000
+ExpiresByType image/jpeg A2592000
+ExpiresByType image/png A2592000
+ExpiresByType text/css A2592000
