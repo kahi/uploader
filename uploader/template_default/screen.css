@@ -126,14 +126,14 @@ h1 {
 	-webkit-border-top-right-radius:7px; -webkit-border-top-left-radius:7px;
 	border-radius:7px 7px 0 0;
 
-	background:#aaa;
+	background:#bbb;
 	color:#333; font-size:120%; font-style:italic; line-height:30px; text-shadow:0 1px 0 #ddd;
 	cursor:pointer;
 }
 		
 	#tabs h2.active {
 		position:relative; top:1px; z-index:1000;
-		background:#bbb;
+		background:#ddd;
 		cursor:default;
 	}
 	
@@ -151,7 +151,7 @@ h1 {
 	-webkit-border-bottom-right-radius:7px; -webkit-border-bottom-left-radius:7px;
 	border-radius:0 0 7px 7px ;
 	
-	background:#bbb;
+	background:#ddd;
 }
 
 
